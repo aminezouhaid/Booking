@@ -25,11 +25,23 @@ const Getallclients = async (req,res,role)=> {
       })
   };
 
+  const deletclient = async (req,res)=> {
+    const idclients=req.params.clientid;
+   
+  let clients = await client.deleteOne({_id:idclients});
+  return res.status(200).json({
+      ...clients,
+      message:"Hurray ! You ar now Delet client Par ID .",
+      success:false
+    })
+};
+
 
 
 
   module.exports = {
     Getallclients,
     updateclient,
+    deletclient
     
    };
