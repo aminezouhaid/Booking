@@ -7,7 +7,7 @@ const addhotel = async (hotelDets,res) => {
            image_cover:hotelDets.image_cover,
            images:hotelDets.images,
            stars:hotelDets.stars,
-           status:hotelDets.status,
+           status:"false",
         });
 
         await newHotel.save();
