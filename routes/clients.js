@@ -12,7 +12,7 @@ const {
 
 
   router.get('/getclient', async(req,res)=>{
-    await Getallclients(req,res);
+    await Getallclients(req,res,"user");
 });
 
 
