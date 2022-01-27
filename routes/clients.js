@@ -1,10 +1,6 @@
 const router = require("express").Router();
 
 
-
-
-
-
 const {
     Getallclients,
     updateclient,
@@ -23,23 +19,6 @@ router.post('/updateclient/:clientid', async(req,res)=>{
 router.post('/deletclient/:clientid', async(req,res)=>{
     await deletclient(req,res);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
