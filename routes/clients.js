@@ -16,7 +16,7 @@ const {
     await Getallclients(req,res,"user");
 });
 
-router.get('/updateclient/:clientid', async(req,res)=>{
+router.post('/updateclient/:clientid', async(req,res)=>{
     await updateclient(req,res);
 });
 
