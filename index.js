@@ -33,7 +33,11 @@ require('./middlewares/passport')(passport);
 
 //User Router Middleware
 app.use("/api/users",require("./routes/users"));
+
 app.use("/api/hotel",require("./routes/hotels"));
+
+app.use("/api/client",require("./routes/clients"));
+
 
 
 

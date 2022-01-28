@@ -125,7 +125,7 @@ const serializeUser = user =>{
 
 
 module.exports = {
-  userAuth,
+   userAuth,
     userRegister,
     userLogin,
     serializeUser,
