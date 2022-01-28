@@ -25,7 +25,6 @@ router.post('/register-admin', async(req,res)=>{
 
 
 
-
 // User Login Route
 
 
@@ -71,13 +70,5 @@ router.get('/admin-protectd',userAuth,checkRole(['admin']) ,async(req,res)=>{
     return res.json("hello admin")
 
 });
-
-module.exports = router;
-
-
-
-
-
-
 
 module.exports = router;

@@ -126,10 +126,10 @@ const serializeUser = user =>{
 
 module.exports = {
   userAuth,
-    userRegister,
-    userLogin,
-    serializeUser,
-    checkRole
+  userRegister,
+  userLogin,
+  serializeUser,
+  checkRole
    
   };
   
