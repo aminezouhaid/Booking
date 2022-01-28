@@ -28,6 +28,6 @@ const UserSchema = new Schema (
         }
 
     },
-    {timestamps:true}
+    {timestamps:true},
 );
 module.exports = model("users",UserSchema);
