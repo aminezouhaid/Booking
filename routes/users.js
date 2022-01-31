@@ -14,21 +14,10 @@ router.post('/register-user', async(req,res)=>{
 router.post('/register-owner-user', async(req,res)=>{
     await userRegister(req.body, "owner-user", res);
 });
-
 //Admin Registration Route
 router.post('/register-admin', async(req,res)=>{
     await userRegister(req.body, "admin", res);
-});
-
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> 1fec2bd6cf68ce3730cff23eb8ca43b8b67feeba
-// User Login Route
+});// User Login Route
 
 
 router.post('/login-user', async(req,res)=>{
