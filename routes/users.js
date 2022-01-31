@@ -20,7 +20,6 @@ router.post('/register-admin', async(req,res)=>{
     await userRegister(req.body, "admin", res);
 });
 
-
 // User Login Route
 
 
