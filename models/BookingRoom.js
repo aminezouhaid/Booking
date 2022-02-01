@@ -13,18 +13,17 @@ const BookingroomSchema = new Schema (
         price:{
             type:String,
             default: true
-
         },
         
         total_price:{
             type:String,
             required:true
         },
-        booking_id:[
+        booking_id: [
             { type: Schema.Types.ObjectId,ref:'booking'}
-]
+                    ]
     },{
-      
+        
     },
     {timestamps:true},
 );
