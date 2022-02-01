@@ -4,24 +4,22 @@ const router = require("express").Router();
 
 
 const {
-    bookingproprietair,
-    updatebooking,
-    getbooking
+    addhotelproprietair,
   } = require("../controllers/HotelproprietaiController");
 
 
 
-  router.post('/addbooking', async(req,res)=>{
-    await bookingproprietair(req.body,res);
+  router.post('/addhotelproprietair', async(req,res)=>{
+    await addhotelproprietair(req.body,res);
 });
 
-router.get('/getbooking', async(req,res)=>{
-  await   getbooking(req,res);
-});
+// router.get('/getbooking', async(req,res)=>{
+//   await   getbooking(req,res);
+// });
 
-router.post('/updatebooking/:bookingid', async(req,res)=>{
-    await updatebooking(req,res);
-});
+// router.post('/updatebooking/:bookingid', async(req,res)=>{
+//     await updatebooking(req,res);
+// });
 
 
 
