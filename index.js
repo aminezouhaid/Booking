@@ -47,6 +47,10 @@ app.use("/api/booking",require("./routes/booking"));
 app.use("/api/bookingroom",require("./routes/bookingroom"));
 
 
+app.use("/api/hotelproprietai",require("./routes/hotelproprietai"));
+
+
+
 
 const startApp = async ()=>{
 try{
