@@ -2,12 +2,12 @@ const booking = require('../models/Booking');
 
 
 
-const bookingproprietair = async (bokpro, res) => {
+const bookingproprietair = async (bookingproprietair, res) => {
     
 
     // create a new booking
     const newBooking = new booking({
-       ...bokpro
+       ...bookingproprietair
     });
 
     await newBooking .save();

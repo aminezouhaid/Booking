@@ -44,6 +44,7 @@ app.use("/api/client",require("./routes/clients"));
 app.use("/api/booking",require("./routes/booking"));
 
 
+app.use("/api/bookingroom",require("./routes/bookingroom"));
 
 
 
