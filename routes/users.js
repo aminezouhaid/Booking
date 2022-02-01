@@ -20,11 +20,6 @@ router.post('/register-admin', async(req,res)=>{
     await userRegister(req.body, "admin", res);
 });
 
-
-
-
-
-
 // User Login Route
 
 
@@ -44,7 +39,6 @@ router.post('/login-admin', async(req,res)=>{
     await userLogin(req.body,"admin",res);
 
 });
-
 
 //Profile Route 
 router.get("/profile", userAuth, async (req,res)=>{
