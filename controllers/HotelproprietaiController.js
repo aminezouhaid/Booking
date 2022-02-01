@@ -35,14 +35,10 @@ const updatehotelproprietair = async (req,res)=> {
 
 const delethotelproprietair = async (req,res)=> {
     const idhotels=req.params.hotelid;
-    const {name}= req.body;
-    const {description}= req.body;
-    const {status}= req.body;
-    let newvalues = { $set: {name: name, description:description} };
-  let bookings = await hotelproprietair.updateOne({_id:idhotels}, newvalues);
+  let bookings = await hotelproprietair.deleteOne({_id:idhotels});
   return res.status(200).json({
       ...bookings,
-      message:"Hurray ! You ar now updat hotels Par ID .",
+      message:"Hurray ! You ar now Delet hotels Par ID .",
       success:false
     })
 };

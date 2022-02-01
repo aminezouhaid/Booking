@@ -20,6 +20,10 @@ router.post('/updatehotelproprietair/:hotelid', async(req,res)=>{
     await updatehotelproprietair(req,res);
 });
 
+router.post('/delethotelproprietair/:hotelid', async(req,res)=>{
+    await delethotelproprietair(req,res);
+});
+
 
 
 
