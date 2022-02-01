@@ -18,10 +18,21 @@ const bookingroomproprietair = async (bookingroomproprietair, res) => {
 
 
     const getbookingroom = async (req, res) => {
+      
+        try {
+          const bookingrooms = await bookingroom.find().populate('booking_id');
+          res.status(200).json({success: true , data: bookingrooms})
+        }catch(error){
+          res.status(404).json({success: false , data: [], error: error})
+        }
+      }
+
+
+      const getbookingroomById = async (req, res) => {
         const idbookingroom=req.params.bookingroomid;
         console.log(idbookingroom);
         try {
-          const bookingrooms = await bookingroom.findById(idbookingroom).populate('booking_id');
+          const bookingrooms = await bookingroom.findOne({_id:idbookingroom}).populate('booking_id');
           res.status(200).json({success: true , data: bookingrooms})
         }catch(error){
           res.status(404).json({success: false , data: [], error: error})
@@ -33,6 +44,7 @@ const bookingroomproprietair = async (bookingroomproprietair, res) => {
 
 module.exports = {
     bookingroomproprietair,
-    getbookingroom
+    getbookingroom,
+    getbookingroomById
     
     };
