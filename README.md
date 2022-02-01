@@ -11,10 +11,17 @@
 
 ### - I'm Zakaria  Développeur web, web mobile et concepteur d'application from Morocco.
 
+ ### - context :
+ - ✨ MyBooking is a web application allowing the user to book online the  hotel room of his choice.
+</br>
+</br>
+</br>
 
 ### - Learning :
 - ✨ Data Structures & Algorithms
-- ✨ 
+</br>
+</br>
+</br>
 
 ### - Hobbies : 
 - ✨ Gaming Addict
