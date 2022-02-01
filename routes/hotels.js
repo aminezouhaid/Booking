@@ -5,7 +5,13 @@ const {
    
     checkRole
   } = require("../controllers/Auth");
-const {creatHotel, addHotel, getHotel, updateHotel, deletHotel} = require("../controllers/hotelController");
+const {
+        creatHotel,
+        addHotel,
+        getHotel,
+        updateHotel,
+        deletHotel
+} = require("../controllers/hotelController");
 
 router.post("/add" ,userAuth,checkRole(['admin']), creatHotel);
 router.get("/" ,userAuth,checkRole(['admin']), addHotel);
