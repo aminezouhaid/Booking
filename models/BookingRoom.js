@@ -1,10 +1,7 @@
 const {Schema, model}= require('mongoose');
 const BookingroomSchema = new Schema (
     {
-        booking_id: {
-            type:String,
-            required:true,
-        },
+    
         room_id:{
             type:String,
             required:true
@@ -16,15 +13,22 @@ const BookingroomSchema = new Schema (
         price:{
             type:String,
             default: true
-           
+
         },
         
         total_price:{
             type:String,
             required:true
         },
+        booking_id:[
+            { type: Schema.Types.ObjectId, ref: 'booking'}
+]
+    },{
       
     },
     {timestamps:true},
 );
-module.exports = model("bookingroom",BookingroomSchema);
+module.exports = model(
+    "bookingroom",BookingroomSchema,
+    
+    );
