@@ -20,6 +20,17 @@ const bookingproprietair = async (bookingproprietair, res) => {
   
 };
 
+
+const getbooking = async (req, res) => {
+      
+    try {
+      const bookings = await booking.find().populate('user_id');
+      res.status(200).json({success: true , data: bookings})
+    }catch(error){
+      res.status(404).json({success: false , data: [], error: error})
+    }
+  }
+
 const updatebooking = async (req,res)=> {
     const idbooking=req.params.bookingid;
     const {date_from}= req.body;
@@ -42,5 +53,6 @@ const updatebooking = async (req,res)=> {
 module.exports = {
     bookingproprietair,
     updatebooking,
+    getbooking
     
     };

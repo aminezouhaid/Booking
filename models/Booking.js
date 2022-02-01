@@ -18,12 +18,12 @@ const BookingSchema = new Schema (
             default: true
            
         },
+        user_id:[
+            { type: Schema.Types.ObjectId, ref:'users'}
+]
+    },{
         
-        user_id:{
-            type:String,
-            required:true
-        },
-      
+
     },
     {timestamps:true},
 );

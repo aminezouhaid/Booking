@@ -21,7 +21,7 @@ const BookingroomSchema = new Schema (
             required:true
         },
         booking_id:[
-            { type: Schema.Types.ObjectId, ref: 'booking'}
+            { type: Schema.Types.ObjectId,ref:'booking'}
 ]
     },{
       
