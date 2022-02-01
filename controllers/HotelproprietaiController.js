@@ -19,15 +19,30 @@ const addhotelproprietair = async (hotelproprietairs, res) => {
 };
 
 const updatehotelproprietair = async (req,res)=> {
-    const idbooking=req.params.bookingid;
-    const {date_from}= req.body;
-    const {date_to}= req.body;
+    const idhotels=req.params.hotelid;
+    const {name}= req.body;
+    const {description}= req.body;
     const {status}= req.body;
-    let newvalues = { $set: {date_from: date_from, date_to:date_to,status:status} };
-  let bookings = await booking.updateOne({_id:idbooking}, newvalues);
+    let newvalues = { $set: {name: name, description:description} };
+  let bookings = await hotelproprietair.updateOne({_id:idhotels}, newvalues);
   return res.status(200).json({
       ...bookings,
-      message:"Hurray ! You ar now updat booking Par ID .",
+      message:"Hurray ! You ar now updat hotels Par ID .",
+      success:false
+    })
+};
+
+
+const delethotelproprietair = async (req,res)=> {
+    const idhotels=req.params.hotelid;
+    const {name}= req.body;
+    const {description}= req.body;
+    const {status}= req.body;
+    let newvalues = { $set: {name: name, description:description} };
+  let bookings = await hotelproprietair.updateOne({_id:idhotels}, newvalues);
+  return res.status(200).json({
+      ...bookings,
+      message:"Hurray ! You ar now updat hotels Par ID .",
       success:false
     })
 };
@@ -35,8 +50,10 @@ const updatehotelproprietair = async (req,res)=> {
 
 
 
+
 module.exports = {
     addhotelproprietair,
-    updatehotelproprietair
+    updatehotelproprietair,
+    delethotelproprietair
     
     };
