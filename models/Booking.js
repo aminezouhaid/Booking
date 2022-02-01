@@ -14,9 +14,8 @@ const BookingSchema = new Schema (
             required:true            
         },
         status:{
-            type:String,
-
-            boolean: true
+            type:Boolean,
+            default: true
            
         },
         
