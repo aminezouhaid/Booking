@@ -7,6 +7,8 @@ const {connect} = require("mongoose");
 const passport= require("passport");
 const app  = exp();
 //views
+
+
 const  { engine } = require('express-handlebars') ;
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
@@ -17,21 +19,24 @@ app.set('view engine', 'ejs');
 app.use(bp.json());
 app.get('/', (req, res) => {
     res.render('home');
+   
 });
+// app.get('/loginUser', (req, res) => {
+//     res.render('loginUser');
+   
+// });
+// app.get('/loginOwner', (req, res) => {
+//      res.render('loginOwner');
+   
+// });
 //Bring in the app constants
 const {DB, PORT}= require("./config");
-
 //Initialize the application 
-
-
 //Middlewares
 app.use(cors());
 app.use(bp.json());
 app.use(passport.initialize());
 require('./middlewares/passport')(passport);
-
-
-
 //User Router Middleware
 app.use("/api/users",require("./routes/users"));
 

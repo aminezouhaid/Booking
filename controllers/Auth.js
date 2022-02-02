@@ -14,15 +14,20 @@ const userRegister = async (userDets, role, res) => {
         password,
         role
       });
-  
+      
       await newUser.save();
+     
       return res.status(201).json({
+        
         message: "Hurry! now you are successfully registred. Please nor login.",
-        success: true
-      });
+        
+        success: true,
     
+        
+      });
       
     
+  
   };
 //login
 const userLogin = async (userCreds,role,res)=>{
@@ -46,7 +51,6 @@ const userLogin = async (userCreds,role,res)=>{
       email:user.email
     },
     SECRET ,
-
     {
       expiresIn:"7 days"
     }
@@ -62,15 +66,20 @@ const userLogin = async (userCreds,role,res)=>{
     };
     return res.status(200).json({
       ...result,
+      
       message:"Hurray ! You ar now logged in .",
-      success:false
-    })
-  } else {
+      success:true,
+     
+    });
+    
+}
+else {
     return res.status(403).json({
       mesage: "Incorrect password.",
       success:false
-    });
+    });  
   }
+
 };
 
 
