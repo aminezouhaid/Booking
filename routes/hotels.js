@@ -15,12 +15,16 @@ const {
 
 const {
   creatHotelImages,
+  getImagesByHotel,
+  getImage
 } = require("../controllers/HotelsImagesController");
 
 const upload = require('../middlewares/upload')
 
 router.post("/add", upload.single('image_cover'), userAuth, checkRole(['admin']), creatHotel);
 router.post("/upload", upload.single('image'), userAuth, checkRole(['admin']), creatHotelImages);
+router.get("/imageByHotel/:HotelId", userAuth, checkRole(['admin']), getImagesByHotel);
+
 router.get("/", userAuth, checkRole(['admin']), getHotels);
 router.get("/:hotelId", userAuth, checkRole(['admin']), getHotel);
 router.patch("/:hotelId", userAuth, checkRole(['admin']), updateHotel);

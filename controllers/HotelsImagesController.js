@@ -1,23 +1,26 @@
 const HotelImage = require("../models/HotelsImages")
 
 
-// const getImagesByHotels = async (req, res) => {
-//     try {
-//         const hotels = await Hotel.find()
-//         res.status(200).json({ success: true, data: hotels })
-//     } catch (error) {
-//         res.status(409).json({ success: false, data: [], error: error })
-//     }
-// }
-// const getImages = async (req, res) => {
-//     const hotelId = req.params.hotelId
-//     try {
-//         const hotel = await Hotel.find({ _id: hotelId })
-//         res.status(200).json({ success: true, data: hotel })
-//     } catch (error) {
-//         res.status(404).json({ success: false, data: [], error: error })
-//     }
-// }
+const getImagesByHotel = async (req, res) => {
+    const HotelId = req.params.HotelId
+    try {
+        const hotelimages = await HotelImage.find({
+            hotel_id: HotelId
+        })
+        res.status(200).json({ success: true, data: hotelimages })
+    } catch (error) {
+        res.status(409).json({ success: false, data: [], error: error })
+    }
+}
+const getImage = async (req, res) => {
+    const Id = req.params.Id
+    try {
+        const image = await HotelImage.find({ _id: Id })
+        res.status(200).json({ success: true, data: image })
+    } catch (error) {
+        res.status(404).json({ success: false, data: [], error: error })
+    }
+}
 
 const creatHotelImages = async (req, res) => {
     try {
@@ -43,5 +46,7 @@ const creatHotelImages = async (req, res) => {
 
 module.exports = {
     creatHotelImages,
+    getImagesByHotel,
+    getImage
 };
 
