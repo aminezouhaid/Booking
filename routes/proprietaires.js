@@ -11,6 +11,7 @@ const {updateproprietaire, deletpropreataire} = require("../controllers/propriet
 router.patch("/:propreatairId" ,userAuth,checkRole(['admin']), updateproprietaire);
 router.delete("/:propreatairId" , userAuth,checkRole(['admin']) , deletpropreataire);
 
+
 // router.delete("/:propreatairId" , deletPropreatair );
 
 

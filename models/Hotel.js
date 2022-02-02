@@ -1,18 +1,18 @@
-const {Schema, model}= require('mongoose');
-const HotelSchema = new Schema (
-  {
-      name : {
-          type:String,
-          required:true,
-      },
-      description:{
-          type:String,
-          required:true
-      },
-      user_id: [
-        { type: Schema.Types.ObjectId,ref:'users'}
-                ]
-},{
+// const {Schema, model}= require('mongoose');
+// const HotelSchema = new Schema (
+//   {
+//       name : {
+//           type:String,
+//           required:true,
+//       },
+//       description:{
+//           type:String,
+//           required:true
+//       },
+//       user_id: [
+//         { type: Schema.Types.ObjectId,ref:'users'}
+//                 ]
+// },{
     
       // image_cover:{
       //     type:String,
@@ -30,8 +30,8 @@ const HotelSchema = new Schema (
       //     type:String,
       //     required:true
       // },
-  },
-  {timestamps:true}
+//   },
+//   {timestamps:true}
 const { Schema, model } = require('mongoose');
 const HotelSchema = new Schema(
     {
@@ -47,7 +47,11 @@ const HotelSchema = new Schema(
             type: String,
             required: true
         },
+          user_id: [
+        { type: Schema.Types.ObjectId,ref:'users'}
+                ]
     },
     { timestamps: true }
+  
 );
 module.exports = model("Hotel", HotelSchema);
