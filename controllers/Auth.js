@@ -22,9 +22,13 @@ const userRegister = async (userDets, role, res) => {
         message: "Hurry! now you are successfully registred. Please nor login.",
         
         success: true,
-    
-        
+
+        message: "Hurry! now you are successfully registred. Please now login.",
+        success: true
       });
+
+    
+ 
       
     
   

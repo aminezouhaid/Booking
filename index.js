@@ -37,6 +37,7 @@ app.use(cors());
 app.use(bp.json());
 app.use(passport.initialize());
 require('./middlewares/passport')(passport);
+
 //User Router Middleware
 app.use("/api/users",require("./routes/users"));
 
@@ -48,6 +49,10 @@ app.use("/api/hotel",require("./routes/hotels"));
 
 app.use("/api/client",require("./routes/clients"));
 
+app.use("/api/booking",require("./routes/booking"));
+
+
+app.use("/api/bookingroom",require("./routes/bookingroom"));
 
 
 
