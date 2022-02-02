@@ -1,7 +1,7 @@
 const Hotel = require("../models/Hotel")
 
 
-const addHotel = async (req, res) => {
+const getHotels = async (req, res) => {
   try {
     const hotels = await Hotel.find()
     res.status(200).json({ success: true, data: hotels })
@@ -68,7 +68,7 @@ const deletHotel = async (req, res) => {
 
 module.exports = {
   creatHotel,
-  addHotel,
+  getHotels,
   getHotel,
   updateHotel,
   deletHotel
