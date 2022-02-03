@@ -9,7 +9,7 @@
 
 # About ME 💬 :
 
-### - I'm Zakaria  Développeur web, web mobile et concepteur d'application from Morocco.
+### - I'm Zakaria el Développeur web, web mobile et concepteur d'application from Morocco.
 </br>
 </br>
 </br>
