@@ -11,6 +11,7 @@ const Getallclients = async (req,res,role)=> {
         success:false
       })
   };
+
   const updateclient = async (req,res)=> {
       const idclients=req.params.clientid;
       const {name}= req.body;
