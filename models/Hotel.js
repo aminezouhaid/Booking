@@ -9,6 +9,11 @@ const HotelSchema = new Schema (
           type:String,
           required:true
       },
+      user_id: [
+        { type: Schema.Types.ObjectId,ref:'users'}
+                ]
+},{
+    
       // image_cover:{
       //     type:String,
       //     required:true
@@ -27,5 +32,22 @@ const HotelSchema = new Schema (
       // },
   },
   {timestamps:true}
+const { Schema, model } = require('mongoose');
+const HotelSchema = new Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        image_cover: {
+            type: String,
+            required: true
+        },
+    },
+    { timestamps: true }
 );
-module.exports = model("Hotel",HotelSchema);
+module.exports = model("Hotel", HotelSchema);

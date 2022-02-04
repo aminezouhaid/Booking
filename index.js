@@ -1,6 +1,7 @@
 const cors = require("cors");
 const bp = require("body-parser");
 const exp = require("express");
+
 const {success,error} = require('consola')
 const {connect} = require("mongoose");
 const passport= require("passport");
@@ -11,7 +12,7 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
 app.use(bp.urlencoded({ extended: false }));
-
+app.set('view engine', 'ejs');
 // parse application/json
 app.use(bp.json());
 app.get('/', (req, res) => {
@@ -30,7 +31,6 @@ app.use(passport.initialize());
 require('./middlewares/passport')(passport);
 
 
-
 //User Router Middleware
 app.use("/api/users",require("./routes/users"));
 
@@ -38,9 +38,18 @@ app.use("/api/propreataire",require("./routes/proprietaires"));
 
 
 app.use("/api/hotel",require("./routes/hotels"));
+app.use("/api/room", require("./routes/room"));
 
 
 app.use("/api/client",require("./routes/clients"));
+
+app.use("/api/booking",require("./routes/booking"));
+
+
+app.use("/api/bookingroom",require("./routes/bookingroom"));
+
+
+app.use("/api/hotelproprietai",require("./routes/hotelproprietai"));
 
 
 

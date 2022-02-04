@@ -8,9 +8,11 @@ const {
 const {Getallproprietaires,updateproprietaire, deletpropreataire} = require("../controllers/proprietaireController");
 //router.getAllPropratire
 
+
 router.get('/getproprtaire',userAuth,checkRole(['admin']), async(req,res)=>{
   await Getallproprietaires(req,res,"owner-user");
 });
+
 
 // router.get("/:propreatairId" , getPropreatair);
 router.patch("/:propreatairId" ,userAuth,checkRole(['admin']), updateproprietaire);
