@@ -10,13 +10,13 @@ const {
   getHotels,
   getHotel,
   updateHotel,
+  getHoteletoiles,
   deletHotel
 } = require("../controllers/hotelController");
 
 const {
   creatHotelImages,
   getImagesByHotel,
-  getHoteletoiles,
   getImage
 } = require("../controllers/HotelsImagesController");
 
