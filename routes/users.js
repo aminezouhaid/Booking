@@ -19,6 +19,10 @@ router.post('/register-admin', async(req,res)=>{
     await userRegister(req.body, "admin", res);
 });
 
+
+// User Login Route
+
+
 router.post('/login-user', async(req,res)=>{
     await userLogin(req.body,"user",res);
 });

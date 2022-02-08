@@ -22,7 +22,7 @@ const {
 
 const upload = require('../middlewares/upload')
 
-router.post("/add", upload.single('image_cover'), userAuth, checkRole(['admin']), creatHotel);
+router.post("/add", upload.single('image_cover'), creatHotel);
 router.post("/upload", upload.single('image'), userAuth, checkRole(['admin']), creatHotelImages);
 router.get("/imageByHotel/:HotelId", userAuth, checkRole(['admin']), getImagesByHotel);
 

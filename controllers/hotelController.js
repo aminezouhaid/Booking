@@ -20,13 +20,18 @@ const getHotel = async (req, res) => {
 }
 
 const creatHotel = async (req, res) => {
+
+ 
   try {
     const { name } = req.body
     const { description } = req.body
+    const { stars } = req.body
 
     const newHotel = new Hotel({
       name: name,
-      description: description
+      description: description,
+      stars: stars
+
     })
     if (req.file) {
       newHotel.image_cover = req.file.path
@@ -69,7 +74,7 @@ const deletHotel = async (req, res) => {
 
 const getHoteletoiles = async (req, res) => {
   const Hoteletoiless=req.params.hoteletoile;
-  console.log(Hoteletoiless);
+  // console.log(Hoteletoiless);
   try {
     const hoteletoil = await Hotel.find({stars:Hoteletoiless});
     console.log(hoteletoil);
@@ -78,6 +83,11 @@ const getHoteletoiles = async (req, res) => {
     res.status(404).json({success: false , data: [], error: error})
   }
 }
+
+
+
+
+
 
 module.exports = {
   creatHotel,
