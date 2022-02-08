@@ -28,7 +28,7 @@ router.get("/imageByHotel/:HotelId", userAuth, checkRole(['admin']), getImagesBy
 
 router.get("/", userAuth, checkRole(['admin']), getHotels);
 
-router.get('/etoile/:hoteletoile', async(req,res)=>{
+router.get("/etoile/:hoteletoile", async(req,res)=>{
   await getHoteletoiles(req,res);
 });
 router.get("/:hotelId", userAuth, checkRole(['admin']), getHotel);
