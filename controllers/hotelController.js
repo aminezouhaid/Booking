@@ -66,11 +66,25 @@ const deletHotel = async (req, res) => {
   }
 }
 
+
+const getHoteletoiles = async (req, res) => {
+  const Hoteletoiless=req.params.hoteletoile;
+  console.log(Hoteletoiless);
+  try {
+    const hoteletoil = await Hotel.find({stars:Hoteletoiless});
+    console.log(hoteletoil);
+    res.status(200).json({success: true , data: hoteletoil})
+  }catch(error){
+    res.status(404).json({success: false , data: [], error: error})
+  }
+}
+
 module.exports = {
   creatHotel,
   getHotels,
   getHotel,
   updateHotel,
+  getHoteletoiles,
   deletHotel
 
 };
