@@ -23,10 +23,12 @@ const creatHotel = async (req, res) => {
   try{
     const {name} = req.body
     const {description} = req.body
+    // const {stars} = req.body
 
     const newHotel = new Hotel({
       name: name,
-      description : description
+      description : description,
+      // stars : stars
     })
     const saveHotel = await newHotel.save()
     res.status(201).json({success: true, data: saveHotel})
@@ -60,6 +62,11 @@ const deletHotel = async (req, res) => {
     res.status(409).json({success: false, data: [] , error: error})
   }
 }
+
+
+
+
+
 
 module.exports = {
   creatHotel,
