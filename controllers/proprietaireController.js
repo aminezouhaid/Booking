@@ -1,4 +1,19 @@
 const  proprietaire = require("../models/User");
+
+const Getallproprietaires = async (req,res,role)=> {
+  let proprietaires = await proprietaire.find({role:role});
+
+  return res.status(200).json({
+      ...proprietaires,
+      
+      message:"Hurray ! You ar now Get all clients .",
+      success:false
+    })
+    
+};
+
+
+
 const updateproprietaire= async (req, res) => {
     const propreatairId = req.params.propreatairId
     const name = req.body.name
@@ -28,7 +43,7 @@ const updateproprietaire= async (req, res) => {
 
  
   module.exports = {
-    
+    Getallproprietaires,
 updateproprietaire,
 deletpropreataire
 
