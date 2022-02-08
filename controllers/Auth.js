@@ -17,7 +17,7 @@ const userRegister = async (userDets, role, res) => {
   
       await newUser.save();
       return res.status(201).json({
-        message: "Hurry! now you are successfully registred. Please nor login.",
+        message: "Hurry! now you are successfully registred. Please now login.",
         success: true
       });
     
@@ -60,6 +60,7 @@ const userLogin = async (userCreds,role,res)=>{
       token : `Bearer ${token}`,
       expiresIn:168
     };
+
     return res.status(200).json({
       ...result,
       message:"Hurray ! You ar now logged in .",

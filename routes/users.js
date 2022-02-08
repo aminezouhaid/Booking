@@ -14,7 +14,6 @@ router.post('/register-user', async(req,res)=>{
 router.post('/register-owner-user', async(req,res)=>{
     await userRegister(req.body, "owner-user", res);
 });
-
 //Admin Registration Route
 router.post('/register-admin', async(req,res)=>{
     await userRegister(req.body, "admin", res);
@@ -43,7 +42,7 @@ router.post('/login-admin', async(req,res)=>{
 
 //Profile Route 
 router.get("/profile", userAuth, async (req,res)=>{
-      console.log(req.user);
+     
     return res.json(serializeUser(req.user));
 });
 //Users Protected Route 
