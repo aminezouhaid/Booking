@@ -26,11 +26,13 @@ const creatHotel = async (req, res) => {
     const { name } = req.body
     const { description } = req.body
     const { stars } = req.body
+    const { status } = req.body
 
     const newHotel = new Hotel({
       name: name,
       description: description,
-      stars: stars
+      stars: stars,
+      status: status
 
     })
     if (req.file) {

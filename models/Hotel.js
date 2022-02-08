@@ -17,10 +17,10 @@ const HotelSchema = new Schema(
             type: String,
             required: false
         },
-        // status: {
-        //     type:Boolean,
-        //     required: false
-        // }
+        status: {
+            type:Boolean,
+            required: false
+        }
     },
     { timestamps: true }
 );
