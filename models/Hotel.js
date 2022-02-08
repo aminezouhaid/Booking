@@ -15,8 +15,12 @@ const HotelSchema = new Schema(
         },
         image_cover: {
             type: String,
-            required: true
+            required: false
         },
+        // status: {
+        //     type:Boolean,
+        //     required: false
+        // }
     },
     { timestamps: true }
 );

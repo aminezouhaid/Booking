@@ -25,10 +25,12 @@ const creatHotel = async (req, res) => {
   try {
     const { name } = req.body
     const { description } = req.body
+    const { stars } = req.body
 
     const newHotel = new Hotel({
       name: name,
-      description: description
+      description: description,
+      stars: stars
 
     })
     if (req.file) {
@@ -72,7 +74,7 @@ const deletHotel = async (req, res) => {
 
 const getHoteletoiles = async (req, res) => {
   const Hoteletoiless=req.params.hoteletoile;
-  console.log(Hoteletoiless);
+  // console.log(Hoteletoiless);
   try {
     const hoteletoil = await Hotel.find({stars:Hoteletoiless});
     console.log(hoteletoil);
