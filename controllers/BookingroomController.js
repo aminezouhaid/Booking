@@ -22,6 +22,7 @@ const bookingroomproprietair = async (bookingroomproprietair, res) => {
 const newBookingClient = new bookingroom({
   ...BookingRoomClient
 });
+console.log(newBookingClient);
 await newBookingClient.save();
 return res.status(201).json({
   message: "Hurry! now you are successfully Booking.",

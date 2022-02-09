@@ -17,7 +17,25 @@ const bookingproprietair = async (bookingproprietair, res) => {
         });
   
     
+};
+
+
+const bookingClient= async (bookingClient, res) => {
+    
   
+  // create a new booking
+  const newBooking = new booking({
+     ...bookingClient
+  });
+
+  await newBooking .save();
+  return res.status(201).json({
+      message: "Hurry! now you are successfully Booking.",
+      success: true
+      });
+
+  
+
 };
 
 
@@ -52,6 +70,7 @@ const updatebooking = async (req,res)=> {
 
 module.exports = {
     bookingproprietair,
+    bookingClient,
     updatebooking,
     getbooking
     

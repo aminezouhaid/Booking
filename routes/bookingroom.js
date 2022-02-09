@@ -24,10 +24,8 @@ router.get('/getbookingroombyid/:bookingroomid', async(req,res)=>{
 
 //reservation Crud Client
 router.post('/ClientAddBookingRoom',async(req,res)=>{
-  await BookingRoomClient(req,res);
+  await BookingRoomClient(req.body,res);
 });
-
-
 
 
 

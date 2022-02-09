@@ -9,14 +9,14 @@ const {Getallproprietaires,updateproprietaire, deletpropreataire} = require("../
 //router.getAllPropratire
 
 
-router.get('/getproprtaire',userAuth,checkRole(['admin']), async(req,res)=>{
+router.get('/getproprtaire', async(req,res)=>{
   await Getallproprietaires(req,res,"owner-user");
 });
 
 
 // router.get("/:propreatairId" , getPropreatair);
-router.patch("/:propreatairId" ,userAuth,checkRole(['admin']), updateproprietaire);
-router.delete("/:propreatairId" , userAuth,checkRole(['admin']) , deletpropreataire);
+router.patch("/:propreatairId" , updateproprietaire);
+router.delete("/:propreatairId" , deletpropreataire);
 
 
 // router.delete("/:propreatairId" , deletPropreatair );

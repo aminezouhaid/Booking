@@ -11,7 +11,7 @@ const BookingSchema = new Schema (
         },
         total_price:{
             type:String,
-            required:true            
+            required:false            
         },
         status:{
             type:Boolean,
