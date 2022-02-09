@@ -25,7 +25,7 @@ const upload = require('../middlewares/upload')
 router.post("/add", upload.single('image_cover'), userAuth, checkRole(['admin']), creatHotel);
 router.post("/upload", upload.single('image'), userAuth, checkRole(['admin']) , creatHotelImages);
 router.get("/imageByHotel/:HotelId", userAuth, checkRole(['admin']), getImagesByHotel);
-router.post("/upload", upload.single('image'), userAuth, checkRole(['owner-user']) , OwnercreatHotelImages);
+router.post("/upload", upload.array('image',8), userAuth, checkRole(['owner-user']) , OwnercreatHotelImages);
 
 router.get("/", userAuth, checkRole(['admin']), getHotels);
 router.get("/:hotelId", userAuth, checkRole(['admin']), getHotel);

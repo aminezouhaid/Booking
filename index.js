@@ -45,18 +45,19 @@ app.use("/api/propreataire",require("./routes/proprietaires"));
 
 
 app.use("/api/hotel",require("./routes/hotels"));
-app.use("/api/room", require("./routes/room"));
 
+app.use("/api/room", require("./routes/room"));
 
 app.use("/api/client",require("./routes/clients"));
 
 app.use("/api/booking",require("./routes/booking"));
-
+ 
 
 app.use("/api/bookingroom",require("./routes/bookingroom"));
 
 
 app.use("/api/hotelproprietai",require("./routes/hotelproprietai"));
+
 
 
 

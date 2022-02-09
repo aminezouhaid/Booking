@@ -9,11 +9,24 @@ const bookingroomproprietair = async (bookingroomproprietair, res) => {
        ...bookingroomproprietair
     });
 
-    await newBooking .save();
+    await newBooking.save();
     return res.status(201).json({
         message: "Hurry! now you are successfully Booking.",
         success: true
         });
+    }
+
+    //addbookingRoom Client
+    
+    const BookingRoomClient=async(BookingRoomClient,res)=>{
+const newBookingClient = new bookingroom({
+  ...BookingRoomClient
+});
+await newBookingClient.save();
+return res.status(201).json({
+  message: "Hurry! now you are successfully Booking.",
+        success: true
+})
     }
 
 
@@ -45,6 +58,7 @@ const bookingroomproprietair = async (bookingroomproprietair, res) => {
 module.exports = {
     bookingroomproprietair,
     getbookingroom,
-    getbookingroomById
+    getbookingroomById,
+    BookingRoomClient
     
     };
