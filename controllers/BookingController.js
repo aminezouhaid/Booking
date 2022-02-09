@@ -7,7 +7,8 @@ const bookingproprietair = async (bookingproprietair, res) => {
 
     // create a new booking
     const newBooking = new booking({
-       ...bookingproprietair
+      
+      ...bookingproprietair
     });
 
     await newBooking .save();
