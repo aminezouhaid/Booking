@@ -11,7 +11,9 @@ const {
   getHotel,
   updateHotel,
   getHoteletoiles,
-  deletHotel
+  deletHotel,
+  getHotelbycity,
+  getHotelbycountry
 } = require("../controllers/hotelController");
 
 const {
@@ -34,7 +36,12 @@ router.get("/etoile/:hoteletoile", async(req,res)=>{
 router.get("/:hotelId", userAuth, checkRole(['admin']), getHotel);
 router.patch("/:hotelId", userAuth, checkRole(['admin']), updateHotel);
 router.delete("/:hotelId", userAuth, checkRole(['admin']), deletHotel);
-
-
+router.get("/city/:city", getHotelbycity);
+router.get("/country/:country", getHotelbycountry);
+// router.get("/city/:city", async(req,res)=>{
+  //   await getHotelbycity(req,res);
+  // });
+  
+  // router.get("/city/:city", getHotelbycity);
 
 module.exports = router;
