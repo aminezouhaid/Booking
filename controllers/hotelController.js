@@ -1,6 +1,5 @@
 const Hotel = require("../models/Hotel")
 
-
 const getHotels = async (req, res) => {
   try {
     const hotels = await Hotel.find()
@@ -20,17 +19,21 @@ const getHotel = async (req, res) => {
 }
 
 const creatHotel = async (req, res) => {
-
  
   try {
     const { name } = req.body
     const { description } = req.body
     const { stars } = req.body
+    const { status } = req.body
+    const { city, country } = req.body.localisation
 
     const newHotel = new Hotel({
       name: name,
       description: description,
-      stars: stars
+      stars: stars,
+      status: status,
+      localisation: { city , country}
+      
 
     })
     if (req.file) {
@@ -42,7 +45,6 @@ const creatHotel = async (req, res) => {
     res.status(404).json({ success: false, data: [], error: error })
   }
 }
-
 
 const updateHotel = async (req, res) => {
   const hotelId = req.params.hotelId
@@ -71,7 +73,6 @@ const deletHotel = async (req, res) => {
   }
 }
 
-
 const getHoteletoiles = async (req, res) => {
   const Hoteletoiless=req.params.hoteletoile;
   // console.log(Hoteletoiless);
@@ -86,7 +87,34 @@ const getHoteletoiles = async (req, res) => {
 
 
 
+const getHotelbycity = async (req, res, next) => {
 
+  try {
+      const hotel = await Hotel.find({
+          "localisation.city": req.params.city
+      });
+      res.status(200).json({
+          status: "succes",
+          data: hotel
+      });
+  } catch (err) {
+      res.send(err);
+  }
+};
+const getHotelbycountry = async (req, res, next) => {
+
+  try {
+      const hotel = await Hotel.find({
+          "localisation.country": req.params.country
+      });
+      res.status(200).json({
+          status: "succes",
+          data: hotel
+      });
+  } catch (err) {
+      res.send(err);
+  }
+};
 
 
 module.exports = {
@@ -95,7 +123,7 @@ module.exports = {
   getHotel,
   updateHotel,
   getHoteletoiles,
-  deletHotel
-
+  deletHotel,
+  getHotelbycity,
+  getHotelbycountry
 };
-
