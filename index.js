@@ -38,10 +38,15 @@ app.use("/api/propreataire",require("./routes/proprietaires"));
 
 
 app.use("/api/hotel",require("./routes/hotels"));
-app.use("/api/room", require("./routes/room"));
-
 
 app.use("/api/client",require("./routes/clients"));
+
+app.use("/api/room", require("./routes/room"));
+
+/* zakaria */
+
+app.use("/api/filter",require("./routes/booking"));
+
 
 app.use("/api/booking",require("./routes/booking"));
 
