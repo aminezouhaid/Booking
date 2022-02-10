@@ -50,10 +50,18 @@ const updatebooking = async (req,res)=> {
 /*                   get bookinge par date                                        */
 
 const getdate = async (req, res) => {
-      
+      C_D_F=req.body.date_from;
+      C_D_T=req.body.date_to;
+
+
   try {
-    const bookings = await booking.find().populate('user_id');
+    const bookings = await booking.find({date_from:C_D_F,date_to:C_D_T});
+
+
+
     res.status(200).json({success: true , data: bookings})
+
+
   }catch(error){
     res.status(404).json({success: false , data: [], error: error})
   }
