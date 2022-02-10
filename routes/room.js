@@ -16,14 +16,17 @@ const {
 
 const upload = require('../middlewares/upload')
 
-router.post("/add", upload.single('image_cover'), userAuth, checkRole(['admin']), creatRoom);
+router.post("/add", upload.single('image_cover'), creatRoom);
 
 
-router.get("/", userAuth, checkRole(['admin']), getRooms);
-router.get("/:hotelId", userAuth, checkRole(['admin']), getRoom);
-router.patch("/:hotelId", userAuth, checkRole(['admin']), updateRoom);
-router.delete("/:hotelId", userAuth, checkRole(['admin']), deletRoom);
+router.get("/", getRooms);
+router.get("/:roomId",  getRoom);
+router.patch("/:roomId",  updateRoom);
+router.delete("/:roomId", deletRoom);
 
 
 
 module.exports = router;
+
+
+

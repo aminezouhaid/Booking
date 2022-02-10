@@ -32,7 +32,7 @@ const HotelSchema = new Schema(
             }
         }
     },
-    
+
     { timestamps: true },
 );
 module.exports = model("Hotel", HotelSchema);

@@ -24,17 +24,22 @@ const creatRoom = async (req, res) => {
         const { name } = req.body
         const { description } = req.body
         const { type } = req.body
+        const { price } = req.body
+
         const { hotel_id } = req.body
 
         const newRoom = new Room({
             name: name,
             description: description,
             type: type,
+            price: price,
+
             hotel_id: hotel_id
         })
         if (req.file) {
             newRoom.image_cover = req.file.path
         }
+
         const saveRoom = await newRoom.save()
         res.status(201).json({ success: true, data: saveRoom })
     } catch (error) {
