@@ -19,19 +19,18 @@ const getHotel = async (req, res) => {
 }
 
 const creatHotel = async (req, res) => {
- 
+//  console.log(req.body.localisation.city);
+//  res.status(201).json({ success: true, data: req.body })
   try {
-    const { name } = req.body
-    const { description } = req.body
-    const { stars } = req.body
-    const { status } = req.body
+    const  name  = req.body.name
+    const  description  = req.body.description
+    const  stars  = req.body.stars
     const { city, country } = req.body.localisation
 
     const newHotel = new Hotel({
       name: name,
       description: description,
       stars: stars,
-      status: status,
       localisation: { city , country}
       
 
