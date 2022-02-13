@@ -40,6 +40,24 @@ const creatHotelImages = async (req, res) => {
     }
 }
 
+const OwnercreatHotelImages = async (req, res) => {
+    try {
+        const { hotel_id } = req.body
+
+        const newHotelImages = new HotelImage({
+            hotel_id: hotel_id,
+        }
+        )
+        if (req.file) {
+            newHotelImages.image = req.file.path
+        }
+        const saveHotel = await newHotelImages.save()
+        res.status(201).json({ success: true, data: saveHotel })
+    } catch (error) {
+        res.status(404).json({ success: false, data: [], error: error })
+    }
+}
+
 
 
 
@@ -47,6 +65,7 @@ const creatHotelImages = async (req, res) => {
 module.exports = {
     creatHotelImages,
     getImagesByHotel,
+    OwnercreatHotelImages,
     getImage
 };
 
