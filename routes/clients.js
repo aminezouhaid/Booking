@@ -20,7 +20,7 @@ const {
 
 
 
-router.post('/updateclient/:clientid',userAuth,checkRole(['admin']), async(req,res)=>{
+// router.post('/updateclient/:clientid',userAuth,checkRole(['admin']), async(req,res)=>{
 router.post('/updateclient/:clientid', async(req,res)=>{
 
   await updateclient(req,res);

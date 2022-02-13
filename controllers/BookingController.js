@@ -1,4 +1,6 @@
 const booking = require('../models/Booking');
+const bookingroom = require('../models/BookingRoom');
+
 
 
 
@@ -74,11 +76,12 @@ const getdate = async (req, res) => {
 
   try {
     const bookings = await booking.find({date_from:C_D_F,date_to:C_D_T});
-
-
-
-    res.status(200).json({success: true , data: bookings})
-
+// console.log(bookings[0]._id);
+IDBooking=bookings[0]._id;
+console.log(IDBooking);
+const bookingss = await bookingroom.find({booking_id:IDBooking});
+console.log(bookingss);
+    res.status(200).json({success: true , data: bookingss})
 
   }catch(error){
     res.status(404).json({success: false , data: [], error: error})
