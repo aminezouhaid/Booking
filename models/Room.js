@@ -18,6 +18,7 @@ const RoomSchema = mongoose.model(
             type: String,
             required: true
         },
+        
 
         image_cover: {
             type: String,
@@ -32,3 +33,4 @@ const RoomSchema = mongoose.model(
 );
 
 module.exports = RoomSchema;
+//git add .
