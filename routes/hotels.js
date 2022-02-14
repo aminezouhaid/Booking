@@ -13,7 +13,8 @@ const {
   getHoteletoiles,
   deletHotel,
   getHotelbycity,
-  getHotelbycountry
+  getHotelbycountry,
+  getHotelbyName
 } = require("../controllers/hotelController");
 
 const {
@@ -43,6 +44,7 @@ router.patch("/:hotelId",  updateHotel);
 router.delete("/:hotelId",  deletHotel);
 router.get("/city/:city", getHotelbycity);
 router.get("/country/:country", getHotelbycountry);
+router.get("/name/:name", getHotelbycountry);
 // router.get("/city/:city", async(req,res)=>{
   //   await getHotelbycity(req,res);
   // });
