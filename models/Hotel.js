@@ -16,9 +16,7 @@ const HotelSchema = new Schema(
             required: true
         },
 
-        stars: {
-            type: Number,
-            required: false
+      
         stars: {
             type: Number,
             required: true
@@ -35,17 +33,7 @@ const HotelSchema = new Schema(
             type:Boolean,
             required: false
         },
-        localisation: {
-            city: {
-                type: String,
-                required: [false, 'Hotel must have a city']
-            },
-            country: {
-                type: String,
-                required: [false, 'Hotel must have a coutry']
-            }
-        }
-
+       
         localisation: {
             city: {
                 type: String,
