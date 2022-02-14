@@ -17,7 +17,7 @@ const {
 
 const upload = require('../middlewares/upload')
 
-router.post("/add", upload.single('image_cover'), userAuth, checkRole(['admin']), creatRoom);
+router.post("/add", upload.single('image_cover'), creatRoom);
 
 
 router.get("/", getRooms);
@@ -32,10 +32,13 @@ router.post("/search", searchRoom);
 
 
 
+router.get("/:roomId",  getRoom);
+router.patch("/:roomId",  updateRoom);
+router.delete("/:roomId", deletRoom);
+
 
 
 module.exports = router;
 
 
 
-module.exports = router;

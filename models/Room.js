@@ -12,6 +12,10 @@ const RoomSchema = mongoose.model(
         },
         type: {
             type: String,
+            required: false
+        },
+        price: {
+            type: String,
             required: true
         },
         price: {
@@ -20,7 +24,7 @@ const RoomSchema = mongoose.model(
         },
         image_cover: {
             type: String,
-            required: true
+            required: false
         },
         hotel_id: {
             type: mongoose.Schema.Types.ObjectId,

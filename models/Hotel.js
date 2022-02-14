@@ -19,10 +19,17 @@ const HotelSchema = new Schema(
         stars: {
             type: Number,
             required: false
+        stars: {
+            type: Number,
+            required: true
         },
         image_cover: {
             type: String,
-            required: true
+            required: false
+        },
+        status: {
+            type:Boolean,
+            required: false
         },
         status: {
             type:Boolean,
@@ -39,7 +46,18 @@ const HotelSchema = new Schema(
             }
         }
 
+        localisation: {
+            city: {
+                type: String,
+                required: [true, 'Hotel must have a city']
+            },
+            country: {
+                type: String,
+                required: [true, 'Hotel must have a coutry']
+            }
+        }
     },
-    { timestamps: true }
+
+    { timestamps: true },
 );
 module.exports = model("Hotel", HotelSchema);
