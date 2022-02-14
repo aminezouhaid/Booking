@@ -1,13 +1,30 @@
+const RoomSchema = require("../models/Room");
 const Room = require("../models/Room")
 
 
-const getRooms = async (req, res) => {
-    try {
-        const rooms = await Room.find()
-        res.status(200).json({ success: true, data: rooms })
-    } catch (error) {
-        res.status(409).json({ success: false, data: [], error: error })
-    }
+
+
+const getRooms =  (req, res) => {
+    let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
+    let order = req.query.order ? req.query.order : 'asc';
+    let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+
+    Room.find()
+   
+ 
+ .sort([[sortBy, order]])
+ .populate('hotel_id')
+ .limit(limit)
+ .exec((err,rooms)=>{
+     if(err) {
+         return res.status(404).json({
+             error:"Romm not fund !"
+         })
+     }
+     res.json({
+         rooms
+     })
+ })
 }
 const getRoom = async (req, res) => {
     const roomId = req.params.roomId
@@ -85,6 +102,15 @@ const deletRoom = async (req, res) => {
 }
 const SearchRoom = async (req,res)=>{
   
+// search
+ const searchRoom = (req,res)=>{
+
+    let order = req.body.order ? req.body.order : "desc";
+    let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+    let limit = req.body.limit ? parseInt(req.body.limit) : 100;
+    let skip = parseInt(req.body.skip);
+    
+    
     let findArgs = {};
     for (let key in req.body.filters) {
 
@@ -110,6 +136,28 @@ const SearchRoom = async (req,res)=>{
     })
 }
 
+ 
+    Room.find(findArgs)
+   
+ 
+.sort([[sortBy, order]])
+.populate('hotel_id')
+.limit(limit)
+.skip(skip)
+.exec((err,rooms)=>{
+    if(err) {
+        return res.status(404).json({
+            error:"Romm not fund !"
+        })
+    }
+    res.json({
+        rooms
+    })
+})
+
+
+ }
+
 module.exports = {
     creatRoom,
     getRooms,
@@ -117,6 +165,7 @@ module.exports = {
     updateRoom,
     deletRoom,
     SearchRoom,
+    
 
 };
 

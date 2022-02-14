@@ -14,6 +14,7 @@ const {
     updateRoom,
     deletRoom,
     getRooms
+  
 } = require("../controllers/RoomController");
 
 
@@ -29,6 +30,17 @@ router.post("/search",SearchRoom);
 
 
 router.get("/", getRooms);
+router.get("/:hotelId",  getRoom);
+router.patch("/:hotelId", updateRoom);
+router.delete("/:hotelId",  deletRoom);
+router.get("/", getRooms);
+router.get("/:roomId",  getRoom);
+router.patch("/:roomId",  updateRoom);
+router.delete("/:roomId", deletRoom);
+router.post("/search", searchRoom);
+
+
+
 router.get("/:roomId",  getRoom);
 router.patch("/:roomId",  updateRoom);
 router.delete("/:roomId", deletRoom);
