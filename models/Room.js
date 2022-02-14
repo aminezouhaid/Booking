@@ -18,6 +18,11 @@ const RoomSchema = mongoose.model(
             type: String,
             required: true
         },
+        price: {
+            type: String,
+            required: false
+        },
+        
         image_cover: {
             type: String,
             required: false

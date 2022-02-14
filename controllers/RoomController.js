@@ -26,6 +26,8 @@ const creatRoom = async (req, res) => {
         const { type } = req.body
         const { price } = req.body
 
+
+
         const { hotel_id } = req.body
 
         const newRoom = new Room({
@@ -53,6 +55,7 @@ const updateRoom = async (req, res) => {
     const { name } = req.body
     const { description } = req.body
     const { type } = req.body
+    const { price } = req.body
     const { hotel_id } = req.body
     try {
         const updatedRoomData = await Room.updateOne({ _id: roomId }, {
@@ -60,6 +63,8 @@ const updateRoom = async (req, res) => {
                 name: name,
                 description: description,
                 type: type,
+                price: price,
+
                 hotel_id: hotel_id
             }
         })
@@ -78,13 +83,40 @@ const deletRoom = async (req, res) => {
         res.status(409).json({ success: false, data: [], error: error })
     }
 }
+const SearchRoom = async (req,res)=>{
+  
+    let findArgs = {};
+    for (let key in req.body.filters) {
+
+        if (req.body.filters[key].length > 0) {
+            if (key === "price") {
+                findArgs[key] = {
+                    $gte: req.body.filters[key][0],
+                    $lte: req.body.filters[key][1]
+                }
+            } else {
+                findArgs[key] = req.body.filters[key];
+            }
+        }
+    }
+    console.log(findArgs)
+    Room.find(findArgs)
+  
+  
+    .exec((err, rooms) => {
+        if (err) 
+        {return res.status(400).json({ success: false, err })}
+        res.json({ rooms})
+    })
+}
 
 module.exports = {
     creatRoom,
     getRooms,
     getRoom,
     updateRoom,
-    deletRoom
+    deletRoom,
+    SearchRoom,
 
 };
 

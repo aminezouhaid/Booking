@@ -1,22 +1,31 @@
 const router = require("express").Router();
-const {
 
-    userAuth,
+// const {
 
-    checkRole
-} = require("../controllers/Auth");
+//     userAuth,
+
+//     checkRole
+// } = require("../controllers/Auth");
 const {
     creatRoom,
-    getRooms,
+    SearchRoom,
+    
     getRoom,
     updateRoom,
-    deletRoom
+    deletRoom,
+    getRooms
 } = require("../controllers/RoomController");
 
 
 const upload = require('../middlewares/upload')
 
 router.post("/add", upload.single('image_cover'), creatRoom);
+
+
+
+
+
+router.post("/search",SearchRoom);
 
 
 router.get("/", getRooms);
@@ -26,7 +35,12 @@ router.delete("/:roomId", deletRoom);
 
 
 
+
+router.get("/:hotelId",  getRoom);
+router.patch("/:hotelId",  updateRoom);
+router.delete("/:hotelId",  deletRoom);
+
+
+
+
 module.exports = router;
-
-
-
