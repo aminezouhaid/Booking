@@ -2,12 +2,14 @@ const {Schema, model}= require('mongoose');
 const BookingroomSchema = new Schema (
     {
     
-        room_id:[{
-            type: Schema.Types.ObjectId, ref:'rooms',
-        }],
+        room_id:{
+            type: String,
+            required:true     
+
+        },
         rooms_quantity:{
             type:String,
-            required:false      
+            required:true      
         },
         price:{
             type:String,
@@ -17,9 +19,9 @@ const BookingroomSchema = new Schema (
             type:String,
             required:false
         },
-        booking_id: [
+        booking_id: 
             { type: Schema.Types.ObjectId,ref:'booking'}
-                    ]
+                    
     },
     {timestamps:true},
 );
