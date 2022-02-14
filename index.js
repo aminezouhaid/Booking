@@ -46,9 +46,16 @@ app.use("/api/propreataire",require("./routes/proprietaires"));
 
 app.use("/api/hotel",require("./routes/hotels"));
 
+app.use("/api/client",require("./routes/clients"));
+
 app.use("/api/room", require("./routes/room"));
 
-app.use("/api/client",require("./routes/clients"));
+/* zakaria */
+
+app.use("/api/filter",require("./routes/booking"));
+
+app.use("/api/room", require("./routes/room"));
+
 
 app.use("/api/booking",require("./routes/booking"));
  
@@ -66,13 +73,12 @@ const startApp = async ()=>{
 try{
     //connection with DB
     await connect(DB,{
-       
         useNewUrlParser: true
-      })
-      success({message: `Successfully connected with the Database \n${DB}`,
-      badge : true} ); 
+})
+success({message: `Successfully connected with the Database \n${DB}`,
+badge : true} ); 
       //Start Listenting for the serevr 
-       app.listen(PORT, ()=>
+    app.listen(PORT, ()=>
         success({message: `Server started o PORT ${PORT}` , badge: true}));
 
 }catch(err){

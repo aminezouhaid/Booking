@@ -1,4 +1,6 @@
 const booking = require('../models/Booking');
+const bookingroom = require('../models/BookingRoom');
+
 
 
 
@@ -7,7 +9,8 @@ const bookingproprietair = async (bookingproprietair, res) => {
 
     // create a new booking
     const newBooking = new booking({
-       ...bookingproprietair
+      
+      ...bookingproprietair
     });
 
     await newBooking .save();
@@ -64,7 +67,25 @@ const updatebooking = async (req,res)=> {
 };
 
 
+/*                   get bookinge par date                                        */
 
+const getdate = async (req, res) => {
+      C_D_F=req.body.date_from;
+      C_D_T=req.body.date_to;
+
+
+  try {
+    const bookings = await booking.find({date_from:C_D_F,date_to:C_D_T});
+// console.log(bookings[0]._id);
+IDBooking=bookings[0]._id;
+const bookingss = await bookingroom.find({booking_id:IDBooking});
+console.log(bookingss);
+    res.status(200).json({success: true , data: bookingss})
+
+  }catch(error){
+    res.status(404).json({success: false , data: [], error: error})
+  }
+}
 
 
 
@@ -72,6 +93,7 @@ module.exports = {
     bookingproprietair,
     bookingClient,
     updatebooking,
-    getbooking
+    getbooking,
+    getdate
     
     };

@@ -18,8 +18,12 @@ const {
     await Getallclients(req,res,"user");
 });
 
+
+
+// router.post('/updateclient/:clientid',userAuth,checkRole(['admin']), async(req,res)=>{
 router.post('/updateclient/:clientid', async(req,res)=>{
-    await updateclient(req,res);
+
+  await updateclient(req,res);
 });
 router.post('/deletclient/:clientid',  async(req,res)=>{
     await deletclient(req,res);
