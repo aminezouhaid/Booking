@@ -19,20 +19,20 @@ const getHotel = async (req, res) => {
 }
 
 const creatHotel = async (req, res) => {
-//  console.log(req.body.localisation.city);
-//  res.status(201).json({ success: true, data: req.body })
+  //  console.log(req.body.localisation.city);
+  //  res.status(201).json({ success: true, data: req.body })
   try {
-    const  name  = req.body.name
-    const  description  = req.body.description
-    const  stars  = req.body.stars
+    const name = req.body.name
+    const description = req.body.description
+    const stars = req.body.stars
     const { city, country } = req.body.localisation
 
     const newHotel = new Hotel({
       name: name,
       description: description,
       stars: stars,
-      localisation: { city , country}
-      
+      localisation: { city, country }
+
 
     })
     if (req.file) {
@@ -73,14 +73,14 @@ const deletHotel = async (req, res) => {
 }
 
 const getHoteletoiles = async (req, res) => {
-  const Hoteletoiless=req.params.hoteletoile;
+  const Hoteletoiless = req.params.hoteletoile;
   // console.log(Hoteletoiless);
   try {
-    const hoteletoil = await Hotel.find({stars:Hoteletoiless});
+    const hoteletoil = await Hotel.find({ stars: Hoteletoiless });
     console.log(hoteletoil);
-    res.status(200).json({success: true , data: hoteletoil})
-  }catch(error){
-    res.status(404).json({success: false , data: [], error: error})
+    res.status(200).json({ success: true, data: hoteletoil })
+  } catch (error) {
+    res.status(404).json({ success: false, data: [], error: error })
   }
 }
 
@@ -89,29 +89,43 @@ const getHoteletoiles = async (req, res) => {
 const getHotelbycity = async (req, res, next) => {
 
   try {
-      const hotel = await Hotel.find({
-          "localisation.city": req.params.city
-      });
-      res.status(200).json({
-          status: "succes",
-          data: hotel
-      });
+    const hotel = await Hotel.find({
+      "localisation.city": req.params.city
+    });
+    res.status(200).json({
+      status: "succes",
+      data: hotel
+    });
   } catch (err) {
-      res.send(err);
+    res.send(err);
+  }
+};
+const getHotelbyName = async (req, res, next) => {
+
+  try {
+    const hotel = await Hotel.find({
+      "name": req.body.name
+    });
+    res.status(200).json({
+      status: "succes",
+      data: hotel
+    });
+  } catch (err) {
+    res.send(err);
   }
 };
 const getHotelbycountry = async (req, res, next) => {
 
   try {
-      const hotel = await Hotel.find({
-          "localisation.country": req.params.country
-      });
-      res.status(200).json({
-          status: "succes",
-          data: hotel
-      });
+    const hotel = await Hotel.find({
+      "localisation.country": req.params.country
+    });
+    res.status(200).json({
+      status: "succes",
+      data: hotel
+    });
   } catch (err) {
-      res.send(err);
+    res.send(err);
   }
 };
 
@@ -124,5 +138,6 @@ module.exports = {
   getHoteletoiles,
   deletHotel,
   getHotelbycity,
-  getHotelbycountry
+  getHotelbycountry,
+  getHotelbyName
 };
