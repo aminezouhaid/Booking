@@ -15,7 +15,7 @@ const HotelSchema = new Schema(
         },
         image_cover: {
             type: String,
-            required: false
+            required: true
         },
         status: {
             type:Boolean,
@@ -24,12 +24,12 @@ const HotelSchema = new Schema(
         localisation: {
             city: {
                 type: String,
-                required: [true, 'Hotel must have a city']
-            },
-            country: {
-                type: String,
-                required: [true, 'Hotel must have a coutry']
+                required: [false, 'Hotel must have a city']
             }
+            // country: {
+            //     type: String,
+            //     required: [true, 'Hotel must have a coutry']
+            // }
         }
     },
     

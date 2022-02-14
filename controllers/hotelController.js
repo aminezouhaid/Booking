@@ -21,22 +21,23 @@ const getHotel = async (req, res) => {
 const creatHotel = async (req, res) => {
  
   try {
-    const { name } = req.body
-    const { description } = req.body
-    const { stars } = req.body
-    const { status } = req.body
-    const { city, country } = req.body.localisation
+    const  name  = req.body.name
+    const  description  = req.body.description
+    const  stars  = req.body.stars
+    // const  status = req.body.status
+    const  city  = req.body.localisation
 
     const newHotel = new Hotel({
       name: name,
       description: description,
       stars: stars,
-      status: status,
-      localisation: { city , country}
+      // status: status,
+      localisation: { city }
       
 
     })
-    if (req.file) {
+  
+    if (req.body.file) {
       newHotel.image_cover = req.file.path
     }
     const saveHotel = await newHotel.save()
@@ -101,20 +102,20 @@ const getHotelbycity = async (req, res, next) => {
       res.send(err);
   }
 };
-const getHotelbycountry = async (req, res, next) => {
+// const getHotelbycountry = async (req, res, next) => {
 
-  try {
-      const hotel = await Hotel.find({
-          "localisation.country": req.params.country
-      });
-      res.status(200).json({
-          status: "succes",
-          data: hotel
-      });
-  } catch (err) {
-      res.send(err);
-  }
-};
+//   try {
+//       const hotel = await Hotel.find({
+//           "localisation.country": req.params.country
+//       });
+//       res.status(200).json({
+//           status: "succes",
+//           data: hotel
+//       });
+//   } catch (err) {
+//       res.send(err);
+//   }
+// };
 
 
 module.exports = {
@@ -125,5 +126,5 @@ module.exports = {
   getHoteletoiles,
   deletHotel,
   getHotelbycity,
-  getHotelbycountry
+  // getHotelbycountry
 };
