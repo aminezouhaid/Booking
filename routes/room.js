@@ -10,7 +10,8 @@ const {
     getRooms,
     getRoom,
     updateRoom,
-    deletRoom
+    deletRoom, 
+   searchRoom
 } = require("../controllers/RoomController");
 
 
@@ -20,6 +21,17 @@ router.post("/add", upload.single('image_cover'), creatRoom);
 
 
 router.get("/", getRooms);
+router.get("/:hotelId",  getRoom);
+router.patch("/:hotelId", updateRoom);
+router.delete("/:hotelId",  deletRoom);
+router.get("/", getRooms);
+router.get("/:roomId",  getRoom);
+router.patch("/:roomId",  updateRoom);
+router.delete("/:roomId", deletRoom);
+router.post("/search", searchRoom);
+
+
+
 router.get("/:roomId",  getRoom);
 router.patch("/:roomId",  updateRoom);
 router.delete("/:roomId", deletRoom);
