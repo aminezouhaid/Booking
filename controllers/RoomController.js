@@ -1,4 +1,4 @@
-const RoomSchema = require("../models/Room");
+
 const Room = require("../models/Room")
 
 
@@ -100,7 +100,7 @@ const deletRoom = async (req, res) => {
         res.status(409).json({ success: false, data: [], error: error })
     }
 }
-const SearchRoom = async (req,res)=>{
+
   
 // search
  const searchRoom = (req,res)=>{
@@ -137,26 +137,10 @@ const SearchRoom = async (req,res)=>{
 }
 
  
-    Room.find(findArgs)
-   
+
+
+
  
-.sort([[sortBy, order]])
-.populate('hotel_id')
-.limit(limit)
-.skip(skip)
-.exec((err,rooms)=>{
-    if(err) {
-        return res.status(404).json({
-            error:"Romm not fund !"
-        })
-    }
-    res.json({
-        rooms
-    })
-})
-
-
- }
 
 module.exports = {
     creatRoom,
@@ -164,7 +148,7 @@ module.exports = {
     getRoom,
     updateRoom,
     deletRoom,
-    SearchRoom,
+    searchRoom,
     
 
 };

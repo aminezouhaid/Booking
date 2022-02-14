@@ -8,14 +8,12 @@ const router = require("express").Router();
 // } = require("../controllers/Auth");
 const {
     creatRoom,
-    SearchRoom,
-    
+    searchRoom,
     getRoom,
     updateRoom,
     deletRoom,
     getRooms
-  
-} = require("../controllers/RoomController");
+} =  require("../controllers/RoomController");
 
 
 const upload = require('../middlewares/upload')
@@ -26,8 +24,8 @@ router.post("/add", upload.single('image_cover'), creatRoom);
 
 
 
-router.post("/search",SearchRoom);
 
+router.post("/search", searchRoom);
 
 router.get("/", getRooms);
 router.get("/:hotelId",  getRoom);
@@ -37,7 +35,6 @@ router.get("/", getRooms);
 router.get("/:roomId",  getRoom);
 router.patch("/:roomId",  updateRoom);
 router.delete("/:roomId", deletRoom);
-router.post("/search", searchRoom);
 
 
 

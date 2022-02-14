@@ -1,6 +1,6 @@
 
-const { Schema, model } = require('mongoose');
-const HotelSchema = new Schema(
+const { Schema,model } = require('mongoose');
+const HotelSchema = new Schema   (
     {
         name: {
             type: String,
@@ -10,30 +10,17 @@ const HotelSchema = new Schema(
             type: String,
             required: false
         },
-
-        image_cover: {
-            type: String,
-            required: true
-        },
-
       
         stars: {
             type: Number,
             required: true
         },
+
         image_cover: {
             type: String,
             required: false
         },
-        status: {
-            type:Boolean,
-            required: false
-        },
-        status: {
-            type:Boolean,
-            required: false
-        },
-       
+   
         localisation: {
             city: {
                 type: String,
@@ -43,9 +30,9 @@ const HotelSchema = new Schema(
                 type: String,
                 required: [true, 'Hotel must have a coutry']
             }
+             
         }
     },
 
-    { timestamps: true },
 );
 module.exports = model("Hotel", HotelSchema);
