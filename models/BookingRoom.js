@@ -5,7 +5,6 @@ const BookingroomSchema = new Schema (
         room_id:{
             type: String,
             required:true     
-
         },
         rooms_quantity:{
             type:String,
