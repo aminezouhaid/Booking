@@ -78,6 +78,9 @@ const getdate = async (req, res) => {
     const bookings = await booking.find({date_from:C_D_F,date_to:C_D_T});
 // console.log(bookings[0]._id);
 IDBooking=bookings[0]._id;
+console.log(
+  IDBooking
+);
 const bookingss = await bookingroom.find({booking_id:IDBooking});
 console.log(bookingss);
     res.status(200).json({success: true , data: bookingss})
