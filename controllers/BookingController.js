@@ -4,23 +4,55 @@ const bookingroom = require('../models/BookingRoom');
 
 
 
-const bookingproprietair = async (bookingproprietair, res) => {
+// const bookingproprietair = async (bookingproprietair, res) => {
     
 
-    // create a new booking
-    const newBooking = new booking({
+//     // create a new booking
+//     const newBooking = new booking({
       
-      ...bookingproprietair
-    });
+//       ...bookingproprietair
+//     });
 
-    await newBooking .save();
-    return res.status(201).json({
-        message: "Hurry! now you are successfully Booking.",
-        success: true
-        });
+//     await newBooking .save();
+//     return res.status(201).json({
+//         message: "Hurry! now you are successfully Booking.",
+//         success: true
+//         });
   
     
-};
+// };
+
+const bookingproprietair = async (req, res) => {
+  //  console.log(req.body.localisation.city);
+  //  res.status(201).json({ success: true, data: req.body })
+
+  try {
+    console.log(req.body)
+    const date_from = req.body.date_from
+    const date_to = req.body.date_to
+    const status = req.body.status
+    const payement_method = req.body.payement_method
+    const total_price = req.body.total_price
+    const user_id = req.body.user_id
+
+
+
+
+    const newBbooking = new booking({
+      date_from: date_from,
+      date_to: date_to,
+      status: status,
+      payement_method: payement_method,
+      total_price: total_price,
+      user_id: user_id,
+    })
+  
+    const saveBooking = await newBbooking.save()
+    res.status(201).json({ success: true, data: saveBooking })
+  } catch (error) {
+    res.status(404).json({ success: false, data: [], error: error })
+  }
+}
 
 
 const bookingClient= async (bookingClient, res) => {

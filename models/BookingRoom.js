@@ -8,11 +8,11 @@ const BookingroomSchema = new Schema (
         },
         rooms_quantity:{
             type:String,
-            required:true      
+            required:false      
         },
         price:{
             type:String,
-            required: true
+            required: false
         },
         total_price:{
             type:String,
@@ -22,6 +22,7 @@ const BookingroomSchema = new Schema (
             { type: Schema.Types.ObjectId,ref:'booking'}
                     
     },
+    
     {timestamps:true},
 );
 module.exports = model(

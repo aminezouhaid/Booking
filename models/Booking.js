@@ -2,16 +2,16 @@ const { Schema, model } = require('mongoose');
 const BookingSchema = new Schema(
     {
         date_from: {
-            type: Date,
+            type: String,
             required: true,
         },
         date_to: {
-            type: Date,
+            type: String,
             required: true
         },
         total_price: {
             type: String,
-            required: false
+            required: true
         },
         payement_method: {
             type: String,
@@ -19,14 +19,15 @@ const BookingSchema = new Schema(
         },
         status: {
             type: Boolean,
-            default: false
+            default: true
         },
         user_id: [
             { type: Schema.Types.ObjectId, ref: 'users' }
         ]
     }, {
 
+
 },
-    { timestamps: true },
+    { timestamps: true},
 );
 module.exports = model("booking", BookingSchema);

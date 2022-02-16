@@ -12,8 +12,6 @@ const Getallproprietaires = async (req,res,role)=> {
     
 };
 
-
-
 const updateproprietaire= async (req, res) => {
     const propreatairId = req.params.propreatairId
     const name = req.body.name
@@ -29,7 +27,9 @@ const updateproprietaire= async (req, res) => {
     }catch(error){
       res.status(409).json({success: false, data: [] , error: error})
     }
+    
   }
+  
 
   const deletpropreataire = async (req, res) => {
     const propreatairId = req.params.propreatairId

@@ -11,7 +11,7 @@ const {
 
 
   router.post('/addbooking', async(req,res)=>{
-    await bookingproprietair(req.body,res);
+    await bookingproprietair(req,res);
 });
 
 router.get('/getbooking', async(req,res)=>{
