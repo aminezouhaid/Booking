@@ -26,15 +26,15 @@ const {
 
 const upload = require('../middlewares/upload')
 
-router.post("/add", upload.single('image_cover'),  creatHotel);
+router.post("/add" ,userAuth, checkRole(['admin']) , upload.single('image_cover'),  creatHotel);
 router.post("/upload", upload.single('image'),  creatHotelImages);
-router.post("/add", upload.single('image_cover'), creatHotel);
+// router.post("/add", upload.single('image_cover'), creatHotel);
 router.post("/upload", upload.single('image'),  creatHotelImages);
 
 router.get("/imageByHotel/:HotelId",  getImagesByHotel);
 router.post("/upload", upload.array('image',8), OwnercreatHotelImages);
 
-router.get("/",  getHotels);
+router.get("/",userAuth,  checkRole(['admin']), getHotels);
 
 router.get("/etoile/:hoteletoile", async(req,res)=>{
   await getHoteletoiles(req,res);

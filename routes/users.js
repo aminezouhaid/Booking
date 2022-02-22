@@ -4,10 +4,12 @@ const {
     userLogin,
     userAuth,
     serializeUser,
-    checkRole
+    checkRole,
+    signout
   } = require("../controllers/Auth");
+  const {userSignUpValidator, userSignInValidator} = require('../middlewares/userValidator')
 //Users Registration Route
-router.post('/register-user', async(req,res)=>{
+router.post('/register-user', userSignUpValidator,async(req,res)=>{
     console.log(req.body)
     await userRegister(req.body, "user", res);
 });
@@ -25,9 +27,7 @@ router.post('/register-admin', async(req,res)=>{
 
 // User Login Route
 
-
-
-router.post('/login-user', async(req,res)=>{
+router.post('/login-user',userSignInValidator, async(req,res)=>{
     await userLogin(req.body,"user",res);
 });
 //Owner User Login Route
@@ -69,4 +69,5 @@ router.get('/admin-protectd',userAuth,checkRole(['admin']) ,async(req,res)=>{
     return res.json("hello admin")
 
 });
+router.get('/signout', signout)
 module.exports = router;

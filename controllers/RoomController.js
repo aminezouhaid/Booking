@@ -9,7 +9,7 @@ const getRooms =  (req, res) => {
     let order = req.query.order ? req.query.order : 'asc';
     let limit = req.query.limit ? parseInt(req.query.limit) : 6;
 
-    Room.find()
+    Room.find() 
    
  
  .sort([[sortBy, order]])
@@ -127,6 +127,7 @@ const deletRoom = async (req, res) => {
     }
     console.log(findArgs)
     Room.find(findArgs)
+    .sort([[sortBy, order]])
   
   
     .exec((err, rooms) => {

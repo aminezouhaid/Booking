@@ -1,6 +1,8 @@
 const cors = require("cors");
 const bp = require("body-parser");
 const exp = require("express");
+const expressValidator = require('express-validator');
+const cookieParser = require('cookie-parser')
 
 const {success,error} = require('consola')
 const {connect} = require("mongoose");
@@ -16,6 +18,7 @@ app.set('views', './views');
 app.use(bp.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 // parse application/json
+app.use(expressValidator());
 app.use(bp.json());
 app.get('/', (req, res) => {
     res.render('home');
@@ -33,9 +36,13 @@ app.get('/', (req, res) => {
 const {DB, PORT}= require("./config");
 //Initialize the application 
 //Middlewares
+
 app.use(cors());
 app.use(bp.json());
 app.use(passport.initialize());
+app.use(cookieParser());
+
+
 require('./middlewares/passport')(passport);
 
 //User Router Middleware
