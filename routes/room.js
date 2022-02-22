@@ -1,28 +1,54 @@
 const router = require("express").Router();
-const {
 
-    userAuth,
+// const {
 
-    checkRole
-} = require("../controllers/Auth");
+//     userAuth,
+
+//     checkRole
+// } = require("../controllers/Auth");
 const {
     creatRoom,
-    getRooms,
+    searchRoom,
     getRoom,
     updateRoom,
-    deletRoom
-} = require("../controllers/RoomController");
+    deletRoom,
+    getRooms
+} =  require("../controllers/RoomController");
 
 
 const upload = require('../middlewares/upload')
 
-router.post("/add", upload.single('image_cover'), userAuth, checkRole(['admin']), creatRoom);
+router.post("/add", upload.single('image_cover'), creatRoom);
 
 
-router.get("/", userAuth, checkRole(['admin']), getRooms);
-router.get("/:hotelId", userAuth, checkRole(['admin']), getRoom);
-router.patch("/:hotelId", userAuth, checkRole(['admin']), updateRoom);
-router.delete("/:hotelId", userAuth, checkRole(['admin']), deletRoom);
+
+
+
+
+router.post("/search", searchRoom);
+
+router.get("/", getRooms);
+router.get("/:hotelId",  getRoom);
+router.patch("/:hotelId", updateRoom);
+router.delete("/:hotelId",  deletRoom);
+router.get("/", getRooms);
+router.get("/:roomId",  getRoom);
+router.patch("/:roomId",  updateRoom);
+router.delete("/:roomId", deletRoom);
+
+
+
+router.get("/:roomId",  getRoom);
+router.patch("/:roomId",  updateRoom);
+router.delete("/:roomId", deletRoom);
+
+
+
+
+router.get("/:hotelId",  getRoom);
+router.patch("/:hotelId",  updateRoom);
+router.delete("/:hotelId",  deletRoom);
+
 
 
 

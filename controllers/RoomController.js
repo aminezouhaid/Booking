@@ -1,13 +1,30 @@
+
 const Room = require("../models/Room")
 
 
-const getRooms = async (req, res) => {
-    try {
-        const rooms = await Room.find()
-        res.status(200).json({ success: true, data: rooms })
-    } catch (error) {
-        res.status(409).json({ success: false, data: [], error: error })
-    }
+
+
+const getRooms =  (req, res) => {
+    let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
+    let order = req.query.order ? req.query.order : 'asc';
+    let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+
+    Room.find()
+   
+ 
+ .sort([[sortBy, order]])
+ .populate('hotel_id')
+ .limit(limit)
+ .exec((err,rooms)=>{
+     if(err) {
+         return res.status(404).json({
+             error:"Romm not fund !"
+         })
+     }
+     res.json({
+         rooms
+     })
+ })
 }
 const getRoom = async (req, res) => {
     const roomId = req.params.roomId
@@ -24,17 +41,24 @@ const creatRoom = async (req, res) => {
         const { name } = req.body
         const { description } = req.body
         const { type } = req.body
+        const { price } = req.body
+
+
+
         const { hotel_id } = req.body
 
         const newRoom = new Room({
             name: name,
             description: description,
             type: type,
+            price: price,
+
             hotel_id: hotel_id
         })
         if (req.file) {
             newRoom.image_cover = req.file.path
         }
+
         const saveRoom = await newRoom.save()
         res.status(201).json({ success: true, data: saveRoom })
     } catch (error) {
@@ -48,6 +72,7 @@ const updateRoom = async (req, res) => {
     const { name } = req.body
     const { description } = req.body
     const { type } = req.body
+    const { price } = req.body
     const { hotel_id } = req.body
     try {
         const updatedRoomData = await Room.updateOne({ _id: roomId }, {
@@ -55,6 +80,8 @@ const updateRoom = async (req, res) => {
                 name: name,
                 description: description,
                 type: type,
+                price: price,
+
                 hotel_id: hotel_id
             }
         })
@@ -74,12 +101,55 @@ const deletRoom = async (req, res) => {
     }
 }
 
+  
+// search
+ const searchRoom = (req,res)=>{
+
+    let order = req.body.order ? req.body.order : "desc";
+    let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
+    let limit = req.body.limit ? parseInt(req.body.limit) : 100;
+    let skip = parseInt(req.body.skip);
+    
+    
+    let findArgs = {};
+    for (let key in req.body.filters) {
+
+        if (req.body.filters[key].length > 0) {
+            if (key === "price") {
+                findArgs[key] = {
+                    $gte: req.body.filters[key][0],
+                    $lte: req.body.filters[key][1]
+                }
+            } else {
+                findArgs[key] = req.body.filters[key];
+            }
+        }
+    }
+    console.log(findArgs)
+    Room.find(findArgs)
+  
+  
+    .exec((err, rooms) => {
+        if (err) 
+        {return res.status(400).json({ success: false, err })}
+        res.json({ rooms})
+    })
+}
+
+ 
+
+
+
+ 
+
 module.exports = {
     creatRoom,
     getRooms,
     getRoom,
     updateRoom,
-    deletRoom
+    deletRoom,
+    searchRoom,
+    
 
 };
 

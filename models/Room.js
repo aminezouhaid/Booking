@@ -12,11 +12,17 @@ const RoomSchema = mongoose.model(
         },
         type: {
             type: String,
-            required: true
+            required: false
         },
-        image_cover: {
+        price: {
             type: String,
             required: true
+        },
+        
+
+        image_cover: {
+            type: String,
+            required: false
         },
         hotel_id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -27,3 +33,4 @@ const RoomSchema = mongoose.model(
 );
 
 module.exports = RoomSchema;
+//git add .
