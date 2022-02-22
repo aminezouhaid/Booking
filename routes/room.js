@@ -32,7 +32,7 @@ router.get("/:hotelId",  getRoom);
 router.patch("/:hotelId", updateRoom);
 router.delete("/:hotelId",  deletRoom);
 router.get("/", getRooms);
-router.get("/:roomId",  getRoom);
+router.get("/:roomId",  getRoom); 
 router.patch("/:roomId",  updateRoom);
 router.delete("/:roomId", deletRoom);
 

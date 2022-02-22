@@ -19,12 +19,7 @@ const userRegister = async (userDets, role, res) => {
      
       return res.status(201).json({
         
-        message: "Hurry! now you are successfully registred. Please nor login.",
-        
-        success: true,
-
-        message: "Hurry! now you are successfully registred. Please now login.",
-        success: true
+            newUser
       });
 
     
@@ -61,18 +56,27 @@ const userLogin = async (userCreds,role,res)=>{
      
      
     );
+   
+   
     let result ={
-      username:user.username,
-      role:user.role,
-      email:user.email,
+      user : {
+        name:user.name, 
+        username:user.username,
+        role:user.role,
+        email:user.email,
+      },
+    
       token : `Bearer ${token}`,
       expiresIn:168
     };
+     res.cookie('token' ,result, {expire:new Date() + 8000000});
+  
+    
 
     return res.status(200).json({
       ...result,
       
-      message:"Hurray ! You ar now logged in .",
+      messagee:"Hurray ! You ar now logged in .",
       success:true,
      
     });
@@ -80,7 +84,7 @@ const userLogin = async (userCreds,role,res)=>{
 }
 else {
     return res.status(403).json({
-      mesage: "Incorrect password.",
+      message: "Incorrect password.",
       success:false
     });  
   }
@@ -116,12 +120,22 @@ const serializeUser = user =>{
 }
 }
 
+const signout = (req,res)=>{
+
+  res.clearCookie('token');
+  res.json({
+    message:"User Singout"
+  })
+
+}
+
 
 module.exports = {
    userAuth,
     userRegister,
     userLogin,
     serializeUser,
-    checkRole
+    checkRole,
+    signout
    
   };
